@@ -1,0 +1,31 @@
+
+# Variables de entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+
+# Archivos generados por Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Herramientas de desarrollo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Archivos del editor
+.vscode/
+.idea/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Metadatos de instalación del proyecto
+*.egg-info/
