@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@media print {
+  body:has(.receipt) {
+    background: white;
+  }
+
+  body:has(.receipt) :is(header, #menu-principal, .receipt-controls) {
+    display: none;
+  }
+
+  div:has(> main .receipt) {
+    display: block;
+  }
+
+  main:has(.receipt) {
+    padding: 0;
+  }
+
+  .receipt {
+    break-inside: avoid;
+  }
+}
+
+@theme {
+  --color-brand-green: #2e7d32;
+  --color-brand-ink: #263746;
+  --color-canvas: #f5f7fa;
+  --color-body: #263238;
+  --color-muted: #667085;
+  --color-line: #dce2e7;
+  --color-field-line: #85929e;
+  --color-danger: #d92d20;
+  --color-success-surface: #eaf5eb;
+  --color-success-text: #245c28;
+}
+
+:root {
+  font-family: system-ui, sans-serif;
+  color: var(--color-body);
+  background-color: var(--color-canvas);
+}
+
+@layer components {
+  :where(a, button, h1, main):focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-green;
+  }
+
+  header :where(a, button):focus-visible {
+    @apply outline-white;
+  }
+
+  .menu-link {
+    @apply flex min-h-11 items-center rounded-lg px-3 py-2 text-sm text-brand-ink hover:bg-canvas;
+  }
+
+  .menu-link[aria-current="page"] {
+    @apply bg-success-surface font-semibold text-success-text;
+  }
+
+  .panel {
+    @apply min-w-0 rounded-xl border border-line bg-white p-4 sm:p-6;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold;
+  }
+
+  .field {
+    @apply min-h-11 w-full rounded-lg border border-field-line bg-white px-3 py-2;
+  }
+
+  .field::placeholder {
+    @apply text-muted;
+  }
+
+  .field[aria-invalid="true"] {
+    @apply border-danger;
+  }
+
+  .field-error {
+    @apply mt-1.5 text-sm text-danger;
+  }
+
+  .field:focus-visible,
+  .button:focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-green;
+  }
+
+  .button {
+    @apply min-h-11 cursor-pointer rounded-lg border px-4 py-2 text-sm font-semibold;
+  }
+
+  .button-primary {
+    @apply border-brand-green bg-brand-green text-white hover:border-success-text hover:bg-success-text;
+  }
+
+  .button-secondary {
+    @apply border-field-line bg-white text-brand-ink hover:bg-canvas;
+  }
+
+  .notice {
+    @apply rounded-lg bg-success-surface px-3 py-2.5 text-sm text-success-text;
+  }
+
+  .student-table {
+    @apply w-full text-left text-sm;
+  }
+
+  .student-table thead {
+    @apply bg-canvas text-brand-ink;
+  }
+
+  .student-table th,
+  .student-table td {
+    @apply px-2 py-3 sm:px-4;
+  }
+
+  .student-table tbody tr {
+    @apply border-t border-line;
+  }
+
+  .student-table tbody th {
+    @apply font-medium [overflow-wrap:anywhere];
+  }
+
+  .status {
+    @apply inline-block rounded-full px-2 py-1 text-xs font-semibold;
+  }
+
+  .status-active {
+    @apply bg-success-surface text-success-text;
+  }
+
+  .status-pending {
+    @apply bg-canvas text-brand-ink;
+  }
+}
